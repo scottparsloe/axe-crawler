@@ -19,6 +19,8 @@
   },
   "scripts": {
     "build": "NODE_ENV=production node_modules/rollup/bin/rollup -c rollup.config.js",
+    "selenium-install": "./node_modules/.bin/selenium-standalone install",
+    "selenium-start": "./node_modules/.bin/selenium-standalone start",
     "test": "jest"
   },
   "bin": {
@@ -30,18 +32,19 @@
   "author": "Tyler Collins",
   "license": "MIT",
   "dependencies": {
-    "axe-webdriverjs": "^1.1.5",
-    "axios": "^0.16.2",
-    "cheerio": "^1.0.0-rc.2",
+    "axe-webdriverjs": "^2.3.0",
+    "axios": "^0.19.0",
+    "cheerio": "^1.0.0-rc.3",
     "escape-html": "^1.0.3",
-    "knex": "^0.14.1",
-    "marked": "^0.3.6",
+    "knex": "^0.19.5",
+    "marked": "^0.7.0",
     "minimist": "^1.2.0",
-    "objection": "^0.9.1",
-    "selenium-webdriver": "^3.5.0",
+    "objection": "^1.6.11",
+    "selenium-standalone": "^6.16.0",
+    "selenium-webdriver": "^4.0.0-alpha.5",
     "sqlite3": "^4.0.4",
     "utility-logger": "^0.1.4",
-    "validator": "^8.2.0"
+    "validator": "^11.1.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -64,6 +67,8 @@
     "rollup": "^0.50.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-minify": "^1.0.3",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^2.0.1",
     "sinon": "^4.0.0",
     "uglify-es": "^3.1.3",

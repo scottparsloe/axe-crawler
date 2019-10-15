@@ -8,8 +8,21 @@ import {
 export default {
   // core input options
   input: 'src/index.js', // required
-  external: ['fs', 'selenium-webdriver', 'axe-webdriverjs', 'validator',
-    'marked', 'escape-html', 'axios', 'cheerio', 'path', 'knex', 'objection'],
+  external: [
+    'fs',
+    'selenium-webdriver',
+    'selenium-webdriver/chrome',
+    'axe-webdriverjs',
+    'validator',
+    'marked',
+    'escape-html',
+    'axios',
+    'cheerio',
+    'knex',
+    'objection',
+    'minimist',
+    'utility-logger',
+  ],
   plugins: [
     babel(),
     uglify({}, minify),
@@ -29,7 +42,21 @@ export default {
     file: 'dist/axe-crawler', // required
     format: 'umd', // required
     name: 'axeCrawler',
-    // globals,
+    globals: {
+      'validator': 'validator',
+      'axios': 'axios',
+      'cheerio': 'cheerio',
+      'fs': 'fs',
+      'minimist': 'minimist',
+      'utility-logger': 'Logger',
+      'knex': 'Knex',
+      'objection': 'objection',
+      'selenium-webdriver': 'webDriver',
+      'selenium-webdriver/chrome': 'chromeDriver',
+      'axe-webdriverjs': 'axeBuilder',
+      'marked': 'marked',
+      'escape-html': 'escape',
+},
 
     // advanced output options
     // paths,

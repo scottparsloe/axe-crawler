@@ -51,7 +51,13 @@ export default class TestRunner {
    * @memberof TestRunner
    */
   async run() {
-    await Promise.all(this[QUEUE].map(this[TEST_PAGE]));
+    const { logger } = this[OPTIONS];
+
+    await Promise
+      .all(this[QUEUE].map(this[TEST_PAGE]))
+      .catch((error) => {
+        logger.error(error.message);
+      });
   }
 
   /**
@@ -101,12 +107,14 @@ async function testPage(testCase) {
     options.addArguments(
       'headless',
       'disable-gpu',
+      '--no-sandbox',
       `--window-size=${width},${height}`,
     );
 
     const driver = new webDriver.Builder()
       .forBrowser('chrome')
       .setChromeOptions(options)
+      .usingServer('http://127.0,0.1:4444/wd/hub')
       .build();
 
     const report = await new Promise((resolve, reject) => {
