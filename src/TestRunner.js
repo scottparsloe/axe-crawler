@@ -114,7 +114,7 @@ async function testPage(testCase) {
     const driver = new webDriver.Builder()
       .forBrowser('chrome')
       .setChromeOptions(options)
-      .usingServer('http://127.0,0.1:4444/wd/hub')
+      .usingServer('http://localhost:4444/wd/hub')
       .build();
 
     const report = await new Promise((resolve, reject) => {
